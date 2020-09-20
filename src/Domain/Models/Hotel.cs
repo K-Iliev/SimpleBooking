@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Domain
+namespace Domain.Models
 {
     public class Hotel
     {
@@ -30,12 +30,22 @@ namespace Domain
         public bool IsPeriodAvailable(BookingPeriod bookingPeriod)
           =>  this.Reservations.Where(x => this.IsOpen && !x.BookingPeriod.OverlapWith(bookingPeriod)).Any();
         
-
         public bool IsCapacityAvailableForPeriod(int capacity, BookingPeriod bookingPeriod)
            => this.Reservations.Where(x => IsPeriodAvailable(bookingPeriod)).Sum(x=>x.Room.Capacity)>=capacity;
 
         public bool IsRoomAvailableForPeriod(RoomType roomType, BookingPeriod bookingPeriod)
           => this.Reservations.Where(x => x.Room.Type == roomType && IsPeriodAvailable(bookingPeriod)).Any();
 
+        public bool TryBook(Reservation reservation)
+        {
+            bool canBook = this.IsRoomAvailableForPeriod(reservation.Room.Type, reservation.BookingPeriod);
+            if (!canBook)
+            {
+                return canBook;
+            }
+
+            this._reservations.Add(reservation);
+            return canBook;
+        }
     }
 }
