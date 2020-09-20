@@ -1,6 +1,6 @@
 ﻿using Domain.Common;
 
-namespace Domain.Models
+namespace Domain
 {
     public class RoomType : Enumeration
     {

@@ -1,8 +1,7 @@
 ﻿using System;
 using Domain.Common;
-using Domain.Exceptions;
 
-namespace Domain.Models
+namespace Domain
 {
     public class BookingPeriod : ValueObject
     {
@@ -24,7 +23,8 @@ namespace Domain.Models
                 return;
             }
 
-            throw new InvalidBookingPeriodException("Check-in date should be before check-out date");
+            // TODO: add specific exeption;
+            throw new ArgumentException("Check in date should be before checkout date");
         }
     }
 }
