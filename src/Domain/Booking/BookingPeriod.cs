@@ -2,7 +2,7 @@
 using Domain.Common;
 using Domain.Exceptions;
 
-namespace Domain.Models
+namespace Domain.Booking
 {
     public class BookingPeriod : ValueObject
     {

@@ -1,20 +1,26 @@
 ﻿using System;
+using Domain.Common;
 using Domain.Exceptions;
 
-namespace Domain.Models
+namespace Domain.Booking
 {
-    public class Reservation
+    public class Reservation : Entity<int>
     {
         public ClientInfo  PrimaryClientInfo { get;  private set; }
         public BookingPeriod BookingPeriod  { get; private set; }
         public Room Room { get; private set; }
         public int GuestsCount { get; private set; }
-        public Reservation(BookingPeriod bookingPeriod, ClientInfo client,Room room, int guestsCount)
+        internal Reservation(BookingPeriod bookingPeriod, ClientInfo client,Room room, int guestsCount)
         {
             ValidateGuestsCount(room, guestsCount);
             this.PrimaryClientInfo = client;
             this.BookingPeriod = bookingPeriod;
             this.Room = room;
+            this.GuestsCount = guestsCount;
+        }
+
+        private Reservation(int guestsCount)
+        {
             this.GuestsCount = guestsCount;
         }
 

@@ -1,6 +1,6 @@
 ﻿using Domain.Common;
 
-namespace Domain.Models
+namespace Domain.Booking
 {
     public class RoomType : Enumeration
     {
@@ -24,7 +24,13 @@ namespace Domain.Models
         /// </summary>
         public static readonly RoomType Twin = new RoomType(5, "Twin");
 
-        public RoomType(int id, string name)
+
+        private RoomType(int value)
+          : this(value, FromValue<RoomType>(value).Name)
+        {
+        }
+
+        private RoomType(int id, string name)
             : base(id, name)
         {
         }

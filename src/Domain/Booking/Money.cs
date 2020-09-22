@@ -1,6 +1,6 @@
 ﻿using Domain.Common;
 
-namespace Domain.Models
+namespace Domain.Booking
 {
     public class Money : ValueObject
     {
