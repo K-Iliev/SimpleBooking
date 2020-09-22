@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "src\Applicat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "src\Web\Web.csproj", "{FF1CB127-C431-4757-9621-D47F54A755AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Startup", "Startup\Startup\Startup.csproj", "{BAC1047D-1E46-4173-A3B5-672568F104E3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Startup", "src\Startup\Startup.csproj", "{BAC1047D-1E46-4173-A3B5-672568F104E3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
