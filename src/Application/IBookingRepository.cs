@@ -9,6 +9,6 @@ namespace Application
 {
     public interface IBookingRepository : IRepositoryBase<Hotel>
     {
-        Task<IReadOnlyCollection<AvailableHotelsDto>> SearchAvailableHotels(SearchAvailableHotelsSpecification specification);
+        Task<IReadOnlyCollection<GetAvailableHotelsDto>> SearchAvailableHotels(SearchAvailableHotelsSpecification specification);
     }
 }
