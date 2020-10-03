@@ -8,7 +8,7 @@ namespace Domain.Booking
         public string LastName { get; private set; }
         public string Email { get; private set; }
         public string  PhoneNumber { get; private set; }
-        public ClientInfo(string firstName, string lastName, string phoneNumber, string email)
+        internal ClientInfo(string firstName, string lastName, string phoneNumber, string email)
         {
             this.FirstName = firstName;
             this.LastName = lastName;

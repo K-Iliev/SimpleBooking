@@ -18,7 +18,7 @@ namespace Domain.Booking
         public IReadOnlyCollection<Room> Rooms => _rooms.ToList();
         public IReadOnlyCollection<Reservation> Reservations => _reservations.ToList();
 
-        public Hotel(string location, string name)
+        internal Hotel(string location, string name)
         {
             this.Location = location;
             this.Name = name;

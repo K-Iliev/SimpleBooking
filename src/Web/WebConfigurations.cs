@@ -1,6 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using MediatR;
 using System.Reflection;
+using Application.Common;
+using Web.Services;
 
 namespace Web
 {
@@ -10,6 +12,7 @@ namespace Web
         {
             services.AddControllers();
             services.AddMediatR(Assembly.GetExecutingAssembly());
+            services.AddScoped<IUserContext, AspNetUserContextAdapter>();
             return services;
         }
     }

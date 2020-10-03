@@ -9,9 +9,15 @@
     <Compile Remove="Database\Migrations\20200922080241_Initial-Migration.Designer.cs" />
     <Compile Remove="Database\Migrations\20200922081230_Initial-Migration.cs" />
     <Compile Remove="Database\Migrations\20200922081230_Initial-Migration.Designer.cs" />
+    <Compile Remove="Database\Migrations\20201003203701_Add-User.cs" />
+    <Compile Remove="Database\Migrations\20201003203701_Add-User.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.8" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.8">
       <PrivateAssets>all</PrivateAssets>

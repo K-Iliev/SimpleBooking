@@ -9,7 +9,7 @@ namespace Domain.Booking
         public DateTime CheckOutDate { get; private set; }
         public int GuestsNumber { get; private set; }
 
-        public Booking(Hotel hotel, DateTime checkInDate, DateTime checkOutDate, int guestsNumber)
+        internal Booking(Hotel hotel, DateTime checkInDate, DateTime checkOutDate, int guestsNumber)
         {
             this.Hotel = hotel;
             this.CheckInDate = checkInDate;
