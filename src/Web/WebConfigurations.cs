@@ -3,7 +3,7 @@ using MediatR;
 using System.Reflection;
 using Application.Common;
 using Web.Services;
-
+using FluentValidation.AspNetCore;
 namespace Web
 {
     public static class WebConfigurations
@@ -11,6 +11,7 @@ namespace Web
         public static IServiceCollection AddWebComponents(this IServiceCollection services)
         {
             services.AddControllers();
+           
             services.AddMediatR(Assembly.GetExecutingAssembly());
             services.AddScoped<IUserContext, AspNetUserContextAdapter>();
             return services;

@@ -7,11 +7,13 @@ using Domain;
 using Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Web;
+using Web.Middleware;
 
 namespace Startup
 {
@@ -32,6 +34,10 @@ namespace Startup
             services.AddApplication(this._configuration);
             services.AddDomainConfiguration();
             services.AddHttpContextAccessor();
+
+            services.Configure<ApiBehaviorOptions>
+                (options => options.SuppressModelStateInvalidFilter = true);
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "You api title", Version = "v1" });
@@ -76,6 +82,7 @@ namespace Startup
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseValidationExceptionHandler();
             app.UseSwagger();
 
             // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),

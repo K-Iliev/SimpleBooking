@@ -10,10 +10,9 @@ namespace Application.Booking.Queries
 {
     public class GetAvailableHotelsQuery : IRequest<IReadOnlyCollection<GetAvailableHotelsDto>>
     {
-        public DateTime CheckIn { get; set; } = DateTime.Now;
-        public DateTime CheckOut { get; set; } = DateTime.Now;
-        public int GuestsCount { get; set; } = 4;
-
+        public DateTime CheckIn { get; set; } 
+        public DateTime CheckOut { get; set; } 
+        public int GuestsCount { get; set; }
         public class GetAvailableHotelsQueryHandler : IRequestHandler<GetAvailableHotelsQuery, IReadOnlyCollection<GetAvailableHotelsDto>>
         {
             private readonly IBookingRepository _bookingRepository;

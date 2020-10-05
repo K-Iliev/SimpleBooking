@@ -30,9 +30,6 @@ namespace Domain.Booking
         public void Open() => this.IsOpen = true;
         public void Close() => this.IsOpen = false;
 
-        public bool IsCapacityAvailableForPeriod(int capacity, BookingPeriod bookingPeriod)
-            => this.Reservations.Where(x => IsPeriodAvailable(bookingPeriod)).Sum(x => x.Room.Capacity) >= capacity;
-
         public bool IsRoomAvailableForPeriod(RoomType roomType, BookingPeriod bookingPeriod)
             => this.Reservations.Where(x => x.Room.Type == roomType && IsPeriodAvailable(bookingPeriod)).Any();
 

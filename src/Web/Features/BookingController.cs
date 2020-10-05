@@ -10,7 +10,7 @@ namespace Web.Features
 {
     public class BookingController : ApiBaseController
     {
-        [HttpPost("get-available-hotels")]
+        [HttpGet("get-available-hotels")]
         public async Task<ActionResult<IReadOnlyCollection<GetAvailableHotelsDto>>>
             Search([FromBody] GetAvailableHotelsQuery query)
                 => await this.Send(query);
