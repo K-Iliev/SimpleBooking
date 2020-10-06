@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace Application.Booking.Commands
+namespace Application.Hotels.Commands
 {
     public class AddHotelCommandValidator : AbstractValidator<AddHotelCommand>
     {

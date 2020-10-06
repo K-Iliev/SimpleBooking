@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Domain.Booking;
 using Domain.Booking.Specification;
 using MediatR;
 
-namespace Application.Booking.Queries
+namespace Application.Hotels.Queries
 {
     public class GetAvailableHotelsQuery : IRequest<IReadOnlyCollection<GetAvailableHotelsDto>>
     {
@@ -23,7 +22,7 @@ namespace Application.Booking.Queries
             }
             public async Task<IReadOnlyCollection<GetAvailableHotelsDto>> Handle(GetAvailableHotelsQuery request, CancellationToken cancellationToken)
             {
-                return await this._bookingRepository.SearchAvailableHotels(new SearchAvailableHotelsSpecification());
+                return await this._bookingRepository.SearchAvailableHotels(new SearchAvailableHotelsSpecification(request.CheckIn,request.CheckOut));
             }
         }
     }

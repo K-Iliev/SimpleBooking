@@ -4,16 +4,13 @@ namespace Domain.Booking
 {
     public class ClientInfo : Entity<int>
     {
-        public string FirstName { get; private set; }
-        public string LastName { get; private set; }
-        public string Email { get; private set; }
-        public string  PhoneNumber { get; private set; }
-        internal ClientInfo(string firstName, string lastName, string phoneNumber, string email)
+        public Person Perosn { get; }
+        internal ClientInfo(Person person)
         {
-            this.FirstName = firstName;
-            this.LastName = lastName;
-            this.PhoneNumber = phoneNumber;
-            this.Email = email;
+            this.Perosn = person;
+        }
+        private ClientInfo()
+        {
         }
     }
 }

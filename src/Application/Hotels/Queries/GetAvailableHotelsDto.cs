@@ -1,4 +1,4 @@
-﻿namespace Application.Booking.Queries
+﻿namespace Application.Hotels.Queries
 {
     public class GetAvailableHotelsDto
     {

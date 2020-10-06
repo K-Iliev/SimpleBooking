@@ -4,7 +4,7 @@ using Application.Common;
 using Domain.Booking.Factories;
 using MediatR;
 
-namespace Application.Booking.Commands
+namespace Application.Hotels.Commands
 {
     public class AddHotelCommand : IRequest<Unit>
     {

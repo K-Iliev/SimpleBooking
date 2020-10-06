@@ -31,12 +31,13 @@ namespace Domain.Booking
         public void Close() => this.IsOpen = false;
 
         public bool IsRoomAvailableForPeriod(RoomType roomType, BookingPeriod bookingPeriod)
-            => this.Reservations.Where(x => x.Room.Type == roomType && IsPeriodAvailable(bookingPeriod)).Any();
+            => !this.Reservations.Any() || this.Reservations.Where(x => x.Room.Type == roomType && IsPeriodAvailable(bookingPeriod)).Any();
 
-        public bool TryBook(Reservation reservation)
+        public bool TryBook(BookingPeriod period, Person person, Room room,int guestCount)
         {
+            var reservation = new Reservation(period, new ClientInfo(person), room, guestCount);
             bool canBook = this.IsRoomAvailableForPeriod(reservation.Room.Type, reservation.BookingPeriod);
-            if (!canBook)
+            if (!canBook && this.IsOpen)
             {
                 return canBook;
             }
@@ -46,6 +47,6 @@ namespace Domain.Booking
         }
 
         private bool IsPeriodAvailable(BookingPeriod bookingPeriod)
-             => this.Reservations.Where(x => this.IsOpen && !x.BookingPeriod.OverlapWith(bookingPeriod)).Any();
+             => this.Reservations.All(x =>!x.BookingPeriod.OverlapWith(bookingPeriod));
     }
 }

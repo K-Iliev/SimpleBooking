@@ -16,7 +16,7 @@ namespace Domain.Booking
         }
 
         public bool OverlapWith(BookingPeriod bookingPeriod)
-            => this.CheckIn < bookingPeriod.CheckOut && this.CheckOut > bookingPeriod.CheckIn;
+            => this.CheckIn.Date < bookingPeriod.CheckOut.Date && this.CheckOut.Date > bookingPeriod.CheckIn.Date;
         private void ValidatePeriod(DateTime checkIn, DateTime checkOut)
         {
             if (checkIn < checkOut)

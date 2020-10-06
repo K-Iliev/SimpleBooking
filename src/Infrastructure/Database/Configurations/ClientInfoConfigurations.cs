@@ -15,24 +15,27 @@ namespace Infrastructure.Database.Configurations
                 .HasKey(c => c.Id);
 
             builder
-                .Property(c => c.FirstName)
-                .HasMaxLength(100)
-                .IsRequired();
+             .OwnsOne(c => c.Perosn, o =>
+             {
+                 o.WithOwner();
 
-            builder
-                .Property(c => c.LastName)
-                .HasMaxLength(100)
-                .IsRequired();
-
-            builder
-                .Property(c => c.Email)
-                .HasMaxLength(100)
-                .IsRequired();
-
-            builder
-                .Property(c => c.PhoneNumber)
-                .HasMaxLength(50)
-                .IsRequired();
+                 o.Property(op => op.FirstName)
+                        .HasMaxLength(100)
+                        .IsRequired()
+                        .HasColumnName("FirstName");
+                 o.Property(op => op.LastName)
+                        .HasMaxLength(100)
+                        .IsRequired()
+                        .HasColumnName("LastName");
+                 o.Property(op => op.Email)
+                        .HasMaxLength(100)
+                        .IsRequired()
+                        .HasColumnName("Email");
+                 o.Property(op => op.PhoneNumber)
+                        .HasMaxLength(50)
+                        .IsRequired()
+                        .HasColumnName("PhoneNumber");
+             });
         }
     }
 }

@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Application.Booking.Commands;
-using Application.Booking.Queries;
+using Application.Booking;
+using Application.Hotels.Commands;
+using Application.Hotels.Queries;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Web.Common;
@@ -12,8 +13,14 @@ namespace Web.Features
     {
         [HttpGet("get-available-hotels")]
         public async Task<ActionResult<IReadOnlyCollection<GetAvailableHotelsDto>>>
-            Search([FromBody] GetAvailableHotelsQuery query)
+            Search([FromQuery] GetAvailableHotelsQuery query)
                 => await this.Send(query);
+
+
+        [HttpPost("book")]
+        public async Task
+           Book([FromBody] MakeReservationCommand query)
+               => await this.Send(query);
 
         [Authorize]
         [HttpPost("add-hotel")]
