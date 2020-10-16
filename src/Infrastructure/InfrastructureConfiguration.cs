@@ -2,7 +2,7 @@
 using Application;
 using Application.Identity;
 using Domain.Common;
-using Infrastructure.Booking;
+using Infrastructure.Hotelship;
 using Infrastructure.Database;
 using Infrastructure.Database.Repositories;
 using Infrastructure.Identity;

@@ -4,7 +4,7 @@ using Infrastructure.Common;
 using Infrastructure.Identity;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure.Booking
+namespace Infrastructure.Hotelship
 {
     internal interface IBookingDbContext : IDbContext
     {

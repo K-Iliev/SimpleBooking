@@ -5,7 +5,7 @@ using Domain.Host;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Infrastructure.Common;
-using Infrastructure.Booking;
+using Infrastructure.Hotelship;
 using Domain.Host.Repositories;
 using Application.Hosts.Queries.HostInfo;
 using AutoMapper;

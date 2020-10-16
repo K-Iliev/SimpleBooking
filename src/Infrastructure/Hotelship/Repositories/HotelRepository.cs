@@ -7,7 +7,7 @@ using Application.Hotels.Queries;
 using AutoMapper;
 using Domain.Booking;
 using Domain.Booking.Specification;
-using Infrastructure.Booking;
+using Infrastructure.Hotelship;
 using Infrastructure.Common;
 using Microsoft.EntityFrameworkCore;
 

@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using Domain.Booking;
 using Domain.Host;
-using Infrastructure.Booking;
+using Infrastructure.Hotelship;
 using Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
