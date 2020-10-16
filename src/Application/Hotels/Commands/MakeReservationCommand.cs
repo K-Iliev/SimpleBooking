@@ -19,22 +19,22 @@ namespace Application.Booking
         public int RoomId { get; set; }
         public class MakeReservationCommandHandler : IRequestHandler<MakeReservationCommand, Unit>
         {
-            private readonly IBookingRepository _bookingRepository;
-            public MakeReservationCommandHandler(IBookingRepository bookingRepository)
+            private readonly IHotelDomainRepository _hotelRepository;
+            public MakeReservationCommandHandler(IHotelDomainRepository hotelRepository)
             {
-                this._bookingRepository = bookingRepository;
+                this._hotelRepository = hotelRepository;
             }
 
             public async Task<Unit> Handle(MakeReservationCommand request, CancellationToken cancellationToken)
             {
-                var hotel = await this._bookingRepository.Find(request.HotelId, cancellationToken);
-                var room = await this._bookingRepository.GetRoom(request.HotelId, cancellationToken);
+                var hotel = await this._hotelRepository.Find(request.HotelId, cancellationToken);
+                var room = await this._hotelRepository.GetRoom(request.HotelId, cancellationToken);
 
                 var bookingPeriod = new BookingPeriod(request.CheckIn, request.CheckOut);
                 var person = new Person(request.FirstName, request.LastName, request.Phone, request.Email);
 
                 hotel.TryBook(bookingPeriod, person, room, request.GuestCount);
-                await this._bookingRepository.Save(hotel, cancellationToken);
+                await this._hotelRepository.Save(hotel, cancellationToken);
                 return Unit.Value;
             }
         }

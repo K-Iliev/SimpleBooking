@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using FluentValidation.AspNetCore;
 using FluentValidation;
+using AutoMapper;
 
 namespace Application
 {
@@ -17,6 +18,7 @@ namespace Application
                                         options.BindNonPublicProperties = true);
 
             services.AddMediatR(Assembly.GetExecutingAssembly());
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
             return services;
         }

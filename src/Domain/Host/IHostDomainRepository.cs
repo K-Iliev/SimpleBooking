@@ -1,11 +1,10 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using Application.Common;
-using Domain.Host;
+using Domain.Common;
 
-namespace Application
+namespace Domain.Host.Repositories
 {
-    public interface IHostRepository : IRepositoryBase<Host>
+    public interface IHostDomainRepository : IDomainRepository<Host>
     {
         Task<Host> FindHost(string userId, CancellationToken cancellationToken);
     }

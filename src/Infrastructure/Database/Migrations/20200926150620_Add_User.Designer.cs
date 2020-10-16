@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Infrastructure.Database.Migrations
 {
-    [DbContext(typeof(BookingDbContext))]
+    [DbContext(typeof(BookingSystemDbContext))]
     [Migration("20200926150620_Add_User")]
     partial class Add_User
     {

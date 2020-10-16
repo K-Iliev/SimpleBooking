@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Application.Common;
 using Domain.Booking.Factories;
+using Domain.Host.Repositories;
 using MediatR;
 
 namespace Application.Hotels.Commands
@@ -14,14 +15,14 @@ namespace Application.Hotels.Commands
         public class AddHotelCommandHandler : IRequestHandler<AddHotelCommand, Unit>
         {
             private readonly IHotelFactory _hotelFactory;
-            private readonly IBookingRepository _bookingRepository;
-            private readonly IHostRepository _hostRepository;
+            private readonly IHotelQueryRepository _bookingRepository;
+            private readonly IHostDomainRepository _hostRepository;
             private readonly IUserContext _userContext;
             public AddHotelCommandHandler(
                 IHotelFactory hotelFactory,
-                IBookingRepository bookingRepository,
+                IHotelQueryRepository bookingRepository,
                 IUserContext userContext,
-                IHostRepository hostRepository)
+                IHostDomainRepository hostRepository)
             {
                 this._hotelFactory = hotelFactory;
                 this._bookingRepository = bookingRepository;

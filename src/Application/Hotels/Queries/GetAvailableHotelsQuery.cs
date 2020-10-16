@@ -14,9 +14,9 @@ namespace Application.Hotels.Queries
         public int GuestsCount { get; set; }
         public class GetAvailableHotelsQueryHandler : IRequestHandler<GetAvailableHotelsQuery, IReadOnlyCollection<GetAvailableHotelsDto>>
         {
-            private readonly IBookingRepository _bookingRepository;
+            private readonly IHotelQueryRepository _bookingRepository;
 
-            public GetAvailableHotelsQueryHandler(IBookingRepository bookingRepository)
+            public GetAvailableHotelsQueryHandler(IHotelQueryRepository bookingRepository)
             {
                 this._bookingRepository = bookingRepository;
             }

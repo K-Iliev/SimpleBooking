@@ -1,15 +1,16 @@
 ﻿using System.Reflection;
 using Domain.Booking;
 using Domain.Host;
+using Infrastructure.Booking;
 using Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Database
 {
-    internal class BookingDbContext : IdentityDbContext<User>
+    internal class BookingSystemDbContext : IdentityDbContext<User>, IBookingDbContext
     {
-        public BookingDbContext(DbContextOptions options) : base(options)
+        public BookingSystemDbContext(DbContextOptions options) : base(options)
         {
         }
 

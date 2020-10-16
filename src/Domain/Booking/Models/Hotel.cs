@@ -46,6 +46,15 @@ namespace Domain.Booking
             return canBook;
         }
 
+        public void AddRoom(string roomNumber,int capacity, int roomType, Money pricePerDay)
+        {
+            this._rooms.Add(
+                new Room(capacity,
+                        roomNumber,
+                        Enumeration.FromValue<RoomType>(roomType),
+                        pricePerDay));
+        }
+
         private bool IsPeriodAvailable(BookingPeriod bookingPeriod)
              => this.Reservations.All(x =>!x.BookingPeriod.OverlapWith(bookingPeriod));
     }

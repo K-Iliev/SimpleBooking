@@ -1,9 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Application.Booking;
-using Application.Hotels.Commands;
 using Application.Hotels.Queries;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Web.Common;
 
@@ -21,11 +19,5 @@ namespace Web.Features
         public async Task
            Book([FromBody] MakeReservationCommand query)
                => await this.Send(query);
-
-        [Authorize]
-        [HttpPost("add-hotel")]
-        public async Task
-          AddHotel([FromBody] AddHotelCommand command)
-              => await this.Send(command);
     }
 }

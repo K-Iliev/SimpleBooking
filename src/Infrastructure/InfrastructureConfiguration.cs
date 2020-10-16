@@ -1,6 +1,8 @@
 ﻿using System.Text;
 using Application;
 using Application.Identity;
+using Domain.Common;
+using Infrastructure.Booking;
 using Infrastructure.Database;
 using Infrastructure.Database.Repositories;
 using Infrastructure.Identity;
@@ -27,7 +29,7 @@ namespace Infrastructure
                     options.Password.RequireNonAlphanumeric = false;
                     options.Password.RequireUppercase = false;
                 })
-                .AddEntityFrameworkStores<BookingDbContext>();
+                .AddEntityFrameworkStores<BookingSystemDbContext>();
 
 
             var secret = configuration
@@ -56,19 +58,30 @@ namespace Infrastructure
                 });
             services.AddAuthentication();
             services.AddDatabase(configuration);
+            services.AddRepositories();
             services.AddTransient<IIdentity, IdentityService>();
             services.AddTransient<IJwtTokenGenerator, JwtTokenGeneratorService>();
-            services.AddScoped<IBookingRepository, BookingRepository>();
-            services.AddScoped<IHostRepository, HostRepository>();
+            services.AddScoped<IHotelQueryRepository, HotelRepository>();
+            services.AddScoped<IHostQueryRepository, HostRepository>();
             return services;
         }
 
         private static IServiceCollection AddDatabase(
             this IServiceCollection services, IConfiguration configuration)
-            => services.AddDbContext<BookingDbContext>(opt => opt
+            => services.AddDbContext<BookingSystemDbContext>(opt => opt
                     .UseSqlServer(configuration.GetConnectionString("DefaultConnection"),
                         sqlServer => sqlServer
-                            .MigrationsAssembly(typeof(BookingDbContext)
-                                .Assembly.FullName)));
+                            .MigrationsAssembly(typeof(BookingSystemDbContext)
+                                .Assembly.FullName)))
+            .AddScoped<IBookingDbContext, BookingSystemDbContext>();
+
+        internal static IServiceCollection AddRepositories(this IServiceCollection services)
+            => services
+                .Scan(scan => scan
+                    .FromCallingAssembly()
+                    .AddClasses(classes => classes
+                        .AssignableTo(typeof(IDomainRepository<>)))
+                    .AsImplementedInterfaces()
+                    .WithTransientLifetime());
     }
 }

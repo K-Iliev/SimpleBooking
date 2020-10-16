@@ -8,10 +8,9 @@ using System.Threading;
 
 namespace Application
 {
-    public interface IBookingRepository : IRepositoryBase<Hotel>
+    public interface IHotelQueryRepository : IRepositoryBase<Hotel>
     {
         Task<IReadOnlyCollection<GetAvailableHotelsDto>> SearchAvailableHotels(SearchAvailableHotelsSpecification specification);
-        Task<Hotel> Find(int id, CancellationToken cancellationToken = default);
-        Task<Room> GetRoom(int id, CancellationToken cancellationToken = default);
+        Task<IEnumerable<TOutput>> GetHotels<TOutput>(string userId, CancellationToken cancellationToken = default);
     }
 }
